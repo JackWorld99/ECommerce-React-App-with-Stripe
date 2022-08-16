@@ -7,8 +7,28 @@ import { urlFor } from '../lib/client'
 import getStripe from '../lib/getStripe'
 
 const Cart = () => {
-    const cartRef = useRef();
+    const cartRef = useRef()
     const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
+
+    const handleCheckout = async () => {
+        const stripe = await getStripe()
+
+        const response = await fetch('/api/stripe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cartItems),
+        })
+
+        if (response.statusCode === 500) return
+
+        const data = await response.json()
+
+        toast.loading('Redirecting...')
+
+        stripe.redirectToCheckout({ sessionId: data.id })
+    }
 
     return (
         <div className="cart-wrapper" ref={cartRef}>
@@ -42,7 +62,7 @@ const Cart = () => {
                                     <div>
                                         <p className="quantity-desc">
                                             <span className="minus" onClick={() => toggleCartItemQuanitity(item._id, 'dec')}><AiOutlineMinus /></span>
-                                            <span className="num" onClick="">{item.quantity}</span>
+                                            <span className="num">{item.quantity}</span>
                                             <span className="plus" onClick={() => toggleCartItemQuanitity(item._id, 'inc')}><AiOutlinePlus /></span>
                                         </p>
                                     </div>
