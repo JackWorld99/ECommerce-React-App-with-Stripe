@@ -13,7 +13,7 @@ export default async function handler(req, res) {
                     shipping_options: [{ shipping_rate: process.env.NEXT_PUBLIC_FREE_SHIPPING },{ shipping_rate: process.env.NEXT_PUBLIC_FAST_SHIPPING }],
                     line_items: req.body.map((item) => {
                         const img = item.image[0].asset._ref;
-                        const newImage = img.replace('image-', 'https://cdn.sanity.io/images/vfxfwnaw/production/').replace('-webp', '.webp');
+                        const newImage = img.replace('image-', 'https://cdn.sanity.io/images/' + process.env.NEXT_PUBLIC_PROJECT_ID + '/production/').replace('-webp', '.webp');
                         return {
                             price_data: { 
                                 currency: 'myr',
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
                         }
                     }),
                     success_url: `${req.headers.origin}/success`,
-                    cancel_url: `${req.headers.origin}/canceled`,
+                    cancel_url: `${req.headers.origin}/`,
             }
     
           const session = await stripe.checkout.sessions.create(params);
