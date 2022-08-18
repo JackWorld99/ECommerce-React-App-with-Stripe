@@ -5,17 +5,19 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
     return (
-        <div className="layout">
-            <Head>
-                <title>Hello World Store</title>
-            </Head>
-            <header>
-                <Navbar />
-            </header>
-            <main className="main-container">
-                {children}
-            </main>
-            <footer>
+        <div>
+            <div className="layout">
+                <Head>
+                    <title>Hello World Store</title>
+                </Head>
+                <header>
+                    <Navbar />
+                </header>
+                <main className="main-container">
+                    {children}
+                </main>
+            </div>
+            <footer className="footer">
                 <Footer />
             </footer>
         </div>
