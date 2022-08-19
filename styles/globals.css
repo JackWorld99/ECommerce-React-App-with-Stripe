@@ -143,8 +143,6 @@ span.text-red {
   cursor: pointer;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
-  color: #324d67;
-
 }
 
 .product-card:hover {
@@ -221,6 +219,8 @@ span.text-red {
 .hero-banner-container .beats-solo {
   font-size: 20px;
   margin-left: 2px;
+  color: #324d67;
+  font-weight: 500;
 }
 
 .hero-banner-container button {
@@ -239,6 +239,7 @@ span.text-red {
 .hero-banner-container h3 {
   font-size: 4rem;
   margin-top: 7px;
+  color: #324d67;
 }
 
 .hero-banner-container h1 {
@@ -285,8 +286,6 @@ span.text-red {
 .products-heading {
   text-align: center;
   margin: 40px 0px;
-  color: #324d67;
-
 }
 
 .products-heading h2 {
@@ -446,8 +445,6 @@ span.text-red {
   display: flex;
   justify-content: space-between;
   width: 350px;
-  color: #324d67;
-
 }
 
 .item-desc .bottom {
@@ -520,8 +517,6 @@ span.text-red {
   gap: 40px;
   margin: 40px;
   margin-top: 60px;
-  color: #324d67;
-
 }
 
 .product-detail-image {
@@ -574,7 +569,6 @@ span.text-red {
 }
 
 .reviews p {
-  color: #324d67;
   margin-top: 0px;
 }
 
@@ -674,8 +668,6 @@ span.text-red {
 .maylike-products-wrapper h2 {
   text-align: center;
   margin: 50px;
-  color: #324d67;
-
   font-size: 28px;
 }
 
@@ -722,7 +714,6 @@ span.text-red {
   margin-top: 15px 0px;
   font-weight: 900;
   font-size: 40px;
-  color: #324d67;
 }
 
 .success .email-msg {
@@ -853,6 +844,49 @@ footer .bottom-details {
   text-decoration: none;
 }
 
+.slideshow {
+  overflow: hidden;
+  width: 800px;
+  height: 500px;
+}
+
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1000ms;
+}
+
+.slide {
+  display: inline-block;
+  border-radius: 10px;
+  width: 800px;
+  height: 500px;
+}
+
+.slideshowDots {
+  position: absolute;
+  width: 800px;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+}
+
+.slideshowDot {
+  margin: 15px 18px 0px;
+  border: 2px solid #40D3DC;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.slideshowDot.active {
+  background-color: #40D3DC;
+}
+
+.slideshowDot:hover {
+  background: #40D3DC;
+}
+
 @media screen and (max-width:800px) {
   .banner-desc button {
     margin-top: 30px;
@@ -872,6 +906,8 @@ footer .bottom-details {
   .hero-banner-container .beats-solo {
     font-size: 20px;
     margin-left: -15px;
+    color: #324d67;
+    font-weight: 500;
   }
 
   .footer-banner-container {
@@ -925,6 +961,7 @@ footer .bottom-details {
   .hero-banner-container h3 {
     font-size: 40px;
     margin-left: -15px;
+    color: #324d67;
   }
 
   .hero-banner-container button {
@@ -993,7 +1030,6 @@ footer .bottom-details {
 
   .flex h5 {
     font-size: 16px;
-    color: #324d67;
   }
 
   .flex h4 {

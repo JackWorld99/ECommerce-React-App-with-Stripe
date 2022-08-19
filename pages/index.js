@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { client } from '../lib/client'
-import { Product, FooterBanner, HeroBanner } from '../components'
+import { Product, FooterBanner, HeroBanner, ImgSlider } from '../components'
 import ReactPaginate from "react-paginate"
 
 const Home = ({ products, bannerData }) => {
   const [currentItems, setCurrentItems] = useState([])
   const [pageCount, setPageCount] = useState(0)
   const [itemOffset, setItemOffset] = useState(0)
-  const itemsPerPage = 25
+  const itemsPerPage = 16
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage
@@ -22,6 +22,10 @@ const Home = ({ products, bannerData }) => {
 
   return (
     <div>
+      <div className="slideshows">
+        <ImgSlider />
+      </div>
+      
       <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
       
       <div className="products-heading">
