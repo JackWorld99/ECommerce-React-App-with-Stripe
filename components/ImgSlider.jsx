@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 const ImgSlider = () => {
-    const image = ["https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGVuc3xlbnwwfHwwfHw%3D&w=1000&q=80", "https://blog.hubspot.com/hubfs/image10.jpg", "https://images.unsplash.com/photo-1525119257764-35ca8b725677?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFnbmlmeXxlbnwwfHwwfHw%3D&w=1000&q=80", "https://images.unsplash.com/photo-1605270854320-07767ebafa10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"]
+    const image = ["banner_1.png", "banner_2.png", "banner_3.png", "banner_4.png", "banner_5.png"]
     const delay = 4000
     const [index, setIndex] = useState(0)
     const timeoutRef = useRef(null)
@@ -23,7 +23,7 @@ const ImgSlider = () => {
             <div className="slideshow">
                 <div className="slideshowSlider" style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
                     {image.map((img, index) => (
-                        <img className="slide" key={index} src={img} />
+                        <img className="slide" key={index} src={"/img/" + img} />
                     ))}
                 </div>
 

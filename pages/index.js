@@ -22,9 +22,7 @@ const Home = ({ products, bannerData }) => {
 
   return (
     <div>
-      <div className="slideshows">
-        <ImgSlider />
-      </div>
+      <ImgSlider />
       
       <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
       
