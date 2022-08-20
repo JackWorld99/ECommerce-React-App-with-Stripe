@@ -5,10 +5,10 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
     return (
-        <div>
+        <>
             <div className="layout">
                 <Head>
-                    <title>Hello World Store</title>
+                    <title>Hello World Ecommerce</title>
                 </Head>
                 <header>
                     <Navbar />
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
             <footer className="footer">
                 <Footer />
             </footer>
-        </div>
+        </>
     )
 }
 
