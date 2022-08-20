@@ -3,6 +3,8 @@ import Stripe from 'stripe'
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY)
 
 export default async function handler(req, res) {
+   const slug = req.body.map(item=>item.slug.current)
+
     if (req.method === 'POST') {
         try {
             const params = {
@@ -31,7 +33,7 @@ export default async function handler(req, res) {
                         }
                     }),
                     success_url: `${req.headers.origin}/success`,
-                    cancel_url: `${req.headers.origin}/`,
+                    cancel_url: `${req.headers.origin}/product/${slug}`,
             }
     
           const session = await stripe.checkout.sessions.create(params);
