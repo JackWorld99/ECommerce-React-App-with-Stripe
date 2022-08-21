@@ -435,7 +435,7 @@ span.text-red {
 }
 
 .product .cart-product-image {
-  width: 180px;
+  width: 150px;
   height: 150px;
   border-radius: 15px;
   background-color: #ebebeb;
@@ -480,10 +480,9 @@ span.text-red {
 .cart-bottom {
   position: absolute;
   bottom: 12px;
-  right: 5px;
   width: 100%;
-  padding: 30px 65px;
-
+  padding: 20px 65px;
+  background-color: white;
 }
 
 .btn-container {
@@ -1004,12 +1003,7 @@ ul {
   }
 
   .product {
-    padding: 20px 5px;
-  }
-
-  .product .cart-product-image {
-    width: 25%;
-    height: 25%;
+    padding: 20px 0px;
   }
 
   .buttons .add-to-cart {
@@ -1021,7 +1015,7 @@ ul {
   }
 
   .product-detail-container {
-    margin: 20px;
+    margin: 31px;
   }
 
   .item-desc .flex {

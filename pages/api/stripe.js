@@ -3,7 +3,7 @@ import Stripe from 'stripe'
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY)
 
 export default async function handler(req, res) {
-   const slug = req.body.map(item=>item.slug.current)
+   const slug = Object.values(req.body.map(item=>item.slug.current))[0]
 
     if (req.method === 'POST') {
         try {
@@ -15,7 +15,8 @@ export default async function handler(req, res) {
                     shipping_options: [{ shipping_rate: process.env.NEXT_PUBLIC_FREE_SHIPPING },{ shipping_rate: process.env.NEXT_PUBLIC_FAST_SHIPPING }],
                     line_items: req.body.map((item) => {
                         const img = item.image[0].asset._ref;
-                        const newImage = img.replace('image-', 'https://cdn.sanity.io/images/' + process.env.NEXT_PUBLIC_PROJECT_ID + '/production/').replace('-webp', '.webp');
+                        const newImage = img.replace('image-', 'https://cdn.sanity.io/images/' + process.env.NEXT_PUBLIC_PROJECT_ID + '/production/').replace('-png', '.png').replace('-webp', '.webp');
+                        
                         return {
                             price_data: { 
                                 currency: 'myr',
