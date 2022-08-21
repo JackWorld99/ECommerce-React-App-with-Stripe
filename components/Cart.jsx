@@ -5,29 +5,40 @@ import toast from 'react-hot-toast'
 import { useStateContext } from '../context/StateContext'
 import { urlFor } from '../lib/client'
 import getStripe from '../lib/getStripe'
+import Swal from 'sweetalert2'
 
 const Cart = () => {
     const cartRef = useRef()
     const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
 
     const handleCheckout = async () => {
-        const stripe = await getStripe()
+        let confirmed = false
 
-        const response = await fetch('/api/stripe', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(cartItems),
-        })
+        confirmed = await Swal.fire({
+            title: 'Test Mode - Payment',
+            text: "Please don't use real card details",
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+        }).then((result) => { return result.isConfirmed })
 
-        if (response.statusCode === 500) return
+        if (confirmed) {
+            const stripe = await getStripe()
+            const response = await fetch('/api/stripe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(cartItems),
+            })
 
-        const data = await response.json()
+            if (response.statusCode === 500) return
 
-        toast.loading('Redirecting...')
+            const data = await response.json()
 
-        stripe.redirectToCheckout({ sessionId: data.id })
+            toast.loading('Redirecting...')
+
+            stripe.redirectToCheckout({ sessionId: data.id })
+        }
     }
 
     return (
